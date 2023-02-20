@@ -34,19 +34,29 @@ class Agente {
     switch (percepcion) {
       case 'jugar':
         // Si el juego no ha terminado, cambia el estado del juego a 'jugando'
-        if (this.estado !== 'terminado') {
-          this.estado = 'jugando';
+        if (this.estado !== 'terminado' ) {
 
           // Si el índice del botón es 9, la computadora hace el siguiente movimiento
-          if (index === 9) {
+          if (index === 9 && this.estado=="inicial") {
+            this.estado = 'jugando';
             this.setCasilla(this.mejor_movimiento(this.getTabla()), this.jugador_computadora);
-          } else {
+
+          } else if (this.getTabla()[index]===""){
+            this.estado = 'jugando';
+
             // Si no, el jugador humano hace su movimiento y luego la computadora hace el siguiente
             this.setCasilla(index, this.jugador_humano);
-            this.setCasilla(this.mejor_movimiento(this.getTabla()), this.jugador_computadora);
+            this.fin();
+
+            if (this.estado!="terminado") {
+              this.setCasilla(this.mejor_movimiento(this.getTabla()), this.jugador_computadora);
+              this.fin();
+
+            }
+            
+
           }
         }
-        this.fin();
         break;
       case 'change':
         // Si el juego no ha empezado, cambia las figuras del jugador humano y la computadora
@@ -131,10 +141,8 @@ class Agente {
   setCasilla(cord,jugadorActual){
 
       const casillaActual = document.querySelectorAll('.casilla')[cord];
-      if (!casillaActual.textContent) { // Comprobar que la casilla no esté ocupada
-        casillaActual.textContent = jugadorActual; // Establecer el valor del jugador actual
-        casillaActual.classList.add(jugadorActual); // Añadir la clase de color correspondiente
-      }
+      casillaActual.textContent = jugadorActual; // Establecer el valor del jugador actual
+      casillaActual.classList.add(jugadorActual); // Añadir la clase de color correspondiente
   
   }
 
