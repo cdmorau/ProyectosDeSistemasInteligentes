@@ -18,7 +18,7 @@
 
 <body>
     <div class="container">
-
+        <h1>¡Do it!</h1>
         <div class="tablero">
             <button class="casilla jugar" ></button>
             <button class="casilla jugar" ></button>
@@ -45,10 +45,6 @@
             <p class="nombre">IA</p>
         </div>
 
-        <h1>¡Do it!</h1>
-
-
-        
         
     </div>
 
@@ -56,5 +52,67 @@
    
 
     </script>
+
+    <style>
+        @media (max-width: 700px) {
+            html, body {
+                height: 100%;
+                min-height: 100vh;
+            }
+            body {
+                min-height: 100vh;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100vw;
+                min-height: 100vh;
+                height: 100vh;
+                padding: 0;
+            }
+            h1 {
+                margin-top: 24px;
+                margin-bottom: 24px;
+                text-align: center;
+                width: 100%;
+            }
+            .tablero {
+                order: 1;
+                margin: 0 auto 16px auto;
+                grid-row: unset;
+                grid-column: unset;
+            }
+            .leftbottons {
+                order: 2;
+                display: flex;
+                flex-direction: row;
+                gap: 16px;
+                justify-content: center;
+                align-items: center;
+                width: 100vw;
+                margin-bottom: 16px;
+                grid-row: unset;
+                grid-column: unset;
+            }
+            .b {
+                width: 120px;
+                min-width: 80px;
+                max-width: 160px;
+                height: 50px;
+            }
+            .select_figura {
+                display: none !important;
+            }
+        }
+        h1 {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+    </style>
 </body>
 </html>
